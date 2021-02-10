@@ -1,0 +1,25 @@
+.cont {
+    position: absolute;
+    left: 100px;
+    top: 50px;
+}
+
+.buttonCont {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.array {
+    width: 2px;
+    background-color: white;
+    display: inline-block;
+    margin: 0 1px;
+}
+
+.green {
+    background-color: green;
+}
+
+body {
+    background-color: black;
+}

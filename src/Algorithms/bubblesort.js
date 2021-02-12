@@ -10,5 +10,5 @@ export const bubblesort = inputArr => {
             }
         }
     }
-    return anims;
+    return [anims,inputArr];
 };

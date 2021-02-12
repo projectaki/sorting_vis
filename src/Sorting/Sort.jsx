@@ -7,7 +7,7 @@ import "./Sort.css";
 export default class Sort extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props);
+        
 
         this.state = {array: [],
             terminate: true,
@@ -21,24 +21,22 @@ export default class Sort extends React.Component {
         this.setupArray();
     }
 
-    componentWillUnmount() {
-        clearTimeout(this.timeout);
-      }
 
     // reset the random array
     setupArray() {
-        const array = [];
+        const temp = [];
 
         for (let i = 0; i < 100; i++) {
-            array.push(randomIntFromInterval(5, 60));
+            temp.push(randomIntFromInterval(5, 60));
         }
-        this.setState({array});
+        this.setState({array: temp});
         const arraybars = document.getElementsByClassName("array");
         
         //arraybars[0].style.backgroundColor = "white";
         for (let i = 0; i < arraybars.length; i++) {
             
             arraybars[i].style.backgroundColor = "white";
+            arraybars[i].style.height = temp[i] +"vh";
             
         }
     }
@@ -54,6 +52,7 @@ export default class Sort extends React.Component {
             this.setState({running: true});
             this.bubbleSortCode();
         }
+        console.log(this.state.array);
     }
 
     mergeSort() {
@@ -63,10 +62,38 @@ export default class Sort extends React.Component {
         }
     }
 
+    testSorting() {
+        let same = 0;
+        for (let j = 0; j < 100; j++) {
+            let arrayb = [];
+            let arrayj = [];
+            for (let i = 0; i < 100; i++) {
+                let numb = randomIntFromInterval(5, 60);
+                arrayb.push(numb);
+                arrayj.push(numb);
+            }
+            arrayj.sort(function(a,b){return a - b});
+            arrayb = bubblesort(arrayb)[1];
+            console.log(arrayj);
+            console.log(arrayb);
+
+            
+
+            for (let i = 0; i < arrayj.length;i++) {
+                if(arrayj[i] !== arrayb[i]) {
+                    same++;
+                }
+            }
+        }
+        
+        console.log(same);
+
+    }
+
     async bubbleSortCode() {
         this.setState({terminate: false});
         await delay(1);
-        const anims = bubblesort(this.state.array);
+        const anims = bubblesort(this.state.array)[0];
         //console.log(anims);
         const arraybars = document.getElementsByClassName("array");
         
@@ -160,6 +187,7 @@ export default class Sort extends React.Component {
                 <div class="col s4">
                     <center>
                         <button className="waves-effect waves-light btn" onClick={() => this.mergeSort()}>MergeSort</button>
+                        
                     </center>
                 </div>
             </div>

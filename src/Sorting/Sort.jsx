@@ -10,13 +10,15 @@ export default class Sort extends React.Component {
         console.log(props);
 
         this.state = {array: [],
+            terminate: true,
+            running: false
         
         };
     }
 
     // when the app loads for the first time
     componentDidMount() {
-        this.resetArray();
+        this.setupArray();
     }
 
     componentWillUnmount() {
@@ -24,63 +26,90 @@ export default class Sort extends React.Component {
       }
 
     // reset the random array
-    resetArray() {
+    setupArray() {
         const array = [];
 
-        for (let i = 0; i < 300; i++) {
-            array.push(randomIntFromInterval(5, 500));
+        for (let i = 0; i < 100; i++) {
+            array.push(randomIntFromInterval(5, 60));
         }
         this.setState({array});
         const arraybars = document.getElementsByClassName("array");
-        console.log("HEERE: " +  arraybars[0]);
+        
         //arraybars[0].style.backgroundColor = "white";
         for (let i = 0; i < arraybars.length; i++) {
-            console.log("log: " + i);
+            
             arraybars[i].style.backgroundColor = "white";
-            console.log("HEERE: " +  arraybars[i]);
+            
         }
     }
 
-    async bubbleSort() {
+    resetArray() {
+        this.setState({terminate: true});
+        this.setState({running: false});
+        this.setupArray();
+    }
+
+    bubbleSort() {
+        if(this.state.running === false) {
+            this.setState({running: true});
+            this.bubbleSortCode();
+        }
+    }
+
+    mergeSort() {
+        if(this.state.running === false) {
+            this.setState({running: true});
+            this.mergeSortCode();
+        }
+    }
+
+    async bubbleSortCode() {
+        this.setState({terminate: false});
+        await delay(1);
         const anims = bubblesort(this.state.array);
         //console.log(anims);
         const arraybars = document.getElementsByClassName("array");
         
         for (let i = 0; i < anims.length; i++) {
-            
-                const [id1, id2] = anims[i];
-                const style1 = arraybars[id1].style;
-                const style2 = arraybars[id2].style;
-                style1.backgroundColor = "red";
-                style1.backgroundColor = "white";
-                const temp = style1.height;
-                style1.height = style2.height;
-                style2.height = temp;
-                style2.backgroundColor = "red";
+            if(this.state.terminate === true) {
+                return;
+            }
+            const [id1, id2] = anims[i];
+            const style1 = arraybars[id1].style;
+            const style2 = arraybars[id2].style;
+            style1.backgroundColor = "red";
+            style1.backgroundColor = "white";
+            const temp = style1.height;
+            style1.height = style2.height;
+            style2.height = temp;
+            style2.backgroundColor = "red";
 
-                await delay(1);
+            await delay(1);
+            
+            style2.backgroundColor = "white";
                 
-                style2.backgroundColor = "white";
-                //console.log(i);
                 
         };
         
         this.finished();
     }
 
-    async mergeSort() {
-    
+    async mergeSortCode() {
+        this.setState({terminate: false});
+        await delay(1);
         const anims = mergesort(this.state.array);
         const arraybars = document.getElementsByClassName("array");
         
         for (let i = 0; i < anims.length; i++) {
-            
-                const [id1, id2] = anims[i];
-                const style1 = arraybars[id1].style;
-                style1.height = `${id2}px`;
-                style1.backgroundColor = "red";
-                await delay(1);
-                style1.backgroundColor = "white";
+            if(this.state.terminate === true) {
+                return;
+            }
+            const [id1, id2] = anims[i];
+            const style1 = arraybars[id1].style;
+            style1.height = `${id2}vh`;
+            style1.backgroundColor = "red";
+            await delay(1);
+            style1.backgroundColor = "white";
 
         };
         this.finished();
@@ -104,7 +133,7 @@ export default class Sort extends React.Component {
                     <div 
                     className="array" 
                     key={idx}
-                    style={{height: `${value}px`}}>
+                    style={{height: `${value}vh`, width: `0.6vw`}}>
                     </div>
 
 
@@ -113,9 +142,26 @@ export default class Sort extends React.Component {
     
             </div>
             <div className="buttonCont">
-                <button onClick={() => this.resetArray()}>Reset Array</button>
-                <button onClick={() => this.bubbleSort()}>Bubblesort</button>
-                <button onClick={() => this.mergeSort()}>MergeSort</button>
+                
+                
+                
+            </div>
+            <div class="row">
+                <div class="col s4">
+                    <center>
+                        <button className="waves-effect waves-light btn" onClick={() => this.resetArray()}>Reset Array</button>
+                    </center>
+                </div>
+                <div class="col s4">
+                    <center>
+                        <button className="waves-effect waves-light btn" onClick={() => this.bubbleSort()}>Bubblesort</button>
+                    </center>
+                </div>
+                <div class="col s4">
+                    <center>
+                        <button className="waves-effect waves-light btn" onClick={() => this.mergeSort()}>MergeSort</button>
+                    </center>
+                </div>
             </div>
             </>
             

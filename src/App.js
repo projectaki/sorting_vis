@@ -1,12 +1,12 @@
 import React from "react";
 import Sort from "./Sorting/Sort.jsx";
-
+import Navbar from "./compnents/Navbar"
 function App() {
   return (
     <>
-      <Sort>
+        <Navbar/>
+        <Sort/>
 
-      </Sort>
     
     
     

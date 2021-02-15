@@ -168,11 +168,7 @@ export default class Sort extends React.Component {
                 
     
             </div>
-            <div className="buttonCont">
-                
-                
-                
-            </div>
+           
             <div class="row">
                 <div class="col s4">
                     <center>

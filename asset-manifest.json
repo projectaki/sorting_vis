@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/sorting_vis/static/css/main.3a4d47e1.chunk.css",
-    "main.js": "/sorting_vis/static/js/main.153e091f.chunk.js",
-    "main.js.map": "/sorting_vis/static/js/main.153e091f.chunk.js.map",
+    "main.css": "/sorting_vis/static/css/main.f45ff78f.chunk.css",
+    "main.js": "/sorting_vis/static/js/main.1fe36326.chunk.js",
+    "main.js.map": "/sorting_vis/static/js/main.1fe36326.chunk.js.map",
     "runtime-main.js": "/sorting_vis/static/js/runtime-main.22b52167.js",
     "runtime-main.js.map": "/sorting_vis/static/js/runtime-main.22b52167.js.map",
     "static/js/2.411ae19d.chunk.js": "/sorting_vis/static/js/2.411ae19d.chunk.js",
@@ -10,13 +10,14 @@
     "static/js/3.6d410cf2.chunk.js": "/sorting_vis/static/js/3.6d410cf2.chunk.js",
     "static/js/3.6d410cf2.chunk.js.map": "/sorting_vis/static/js/3.6d410cf2.chunk.js.map",
     "index.html": "/sorting_vis/index.html",
-    "static/css/main.3a4d47e1.chunk.css.map": "/sorting_vis/static/css/main.3a4d47e1.chunk.css.map",
-    "static/js/2.411ae19d.chunk.js.LICENSE.txt": "/sorting_vis/static/js/2.411ae19d.chunk.js.LICENSE.txt"
+    "static/css/main.f45ff78f.chunk.css.map": "/sorting_vis/static/css/main.f45ff78f.chunk.css.map",
+    "static/js/2.411ae19d.chunk.js.LICENSE.txt": "/sorting_vis/static/js/2.411ae19d.chunk.js.LICENSE.txt",
+    "static/media/Sort.css": "/sorting_vis/static/media/LeagueSpartan-Bold.caadcad8.otf"
   },
   "entrypoints": [
     "static/js/runtime-main.22b52167.js",
     "static/js/2.411ae19d.chunk.js",
-    "static/css/main.3a4d47e1.chunk.css",
-    "static/js/main.153e091f.chunk.js"
+    "static/css/main.f45ff78f.chunk.css",
+    "static/js/main.1fe36326.chunk.js"
   ]
 }

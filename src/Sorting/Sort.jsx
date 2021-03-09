@@ -155,6 +155,11 @@ export default class Sort extends React.Component {
 
         return (
             <>
+            <div className="back-btn" style={{position: "absolute", padding: 0, margin: 0}}>
+                <a href="https://projectaki.github.io/portfolio_akos_madarasz/#/Projects" style={{color: "black"}} >
+                    <i class="fas fa-arrow-left fa-2x"></i>
+                </a>
+            </div>
                 <div className="cont">
                 {array.map((value, idx) => (
                     <div 
@@ -169,24 +174,13 @@ export default class Sort extends React.Component {
     
             </div>
            
-            <div class="row">
-                <div class="col s4">
-                    <center>
-                        <button className="waves-effect waves-light btn" onClick={() => this.resetArray()}>Reset Array</button>
-                    </center>
-                </div>
-                <div class="col s4">
-                    <center>
-                        <button className="waves-effect waves-light btn" onClick={() => this.bubbleSort()}>Bubblesort</button>
-                    </center>
-                </div>
-                <div class="col s4">
-                    <center>
-                        <button className="waves-effect waves-light btn" onClick={() => this.mergeSort()}>MergeSort</button>
+                    <div style={{textAlign: "center"}}>
+                        <button onClick={() => this.bubbleSort()}>BUBBLE</button>
+                        <button onClick={() => this.mergeSort()}>MERGE</button>
+                        <button onClick={() => this.resetArray()}>RESET</button>
+                    </div>
                         
-                    </center>
-                </div>
-            </div>
+                        
             </>
             
         )
